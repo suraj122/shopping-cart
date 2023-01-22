@@ -3,10 +3,17 @@ import { Routes, Route } from "react-router-dom";
 import ProductWrapper from "./components/ProductWrapper";
 import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
-  const [cartItems, setCartItems] = useState([]);
+  // State
+  const [cartItems, setCartItems] = useState(
+    JSON.parse(localStorage.getItem("cart")) || []
+  );
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   return (
     <div className="App">

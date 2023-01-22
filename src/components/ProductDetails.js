@@ -22,6 +22,7 @@ function ProductDetails({ cart, setCart }) {
           item.count += productCount;
           setCart([...cart]);
         }
+        return cart;
       });
     }
     setProductCount(1);
